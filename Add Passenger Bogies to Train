@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+
+public class TrainApp {
+    public static void main(String[] args) {
+        ArrayList<String> bogies = new ArrayList<>();
+
+        bogies.add("Sleeper");
+        bogies.add("AC Chair");
+        bogies.add("First Class");
+
+        System.out.println("After insertion: " + bogies);
+
+        bogies.remove("AC Chair");
+
+        boolean exists = bogies.contains("Sleeper");
+        System.out.println("Sleeper exists: " + exists);
+
+        System.out.println("Final list: " + bogies);
+    }
+}
