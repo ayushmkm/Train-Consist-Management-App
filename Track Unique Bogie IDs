@@ -1,0 +1,25 @@
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class TrainBogieManager {
+    public static void main(String[] args) {
+        HashSet<Integer> bogies = new HashSet<>();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Enter number of bogies to add:");
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter bogie ID:");
+            int id = sc.nextInt();
+            bogies.add(id);
+        }
+
+        System.out.println("Unique Bogie IDs:");
+        for (int id : bogies) {
+            System.out.println(id);
+        }
+
+        sc.close();
+    }
+}
