@@ -1,0 +1,37 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+class Bogie {
+    int id;
+    String type;
+    int capacity;
+
+    Bogie(int id, String type, int capacity) {
+        this.id = id;
+        this.type = type;
+        this.capacity = capacity;
+    }
+
+    @Override
+    public String toString() {
+        return "Bogie{ID=" + id + ", Type='" + type + "', Capacity=" + capacity + "}";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Bogie> bogies = new ArrayList<>();
+        bogies.add(new Bogie(101, "Sleeper", 72));
+        bogies.add(new Bogie(102, "General", 90));
+        bogies.add(new Bogie(103, "AC-First", 24));
+        bogies.add(new Bogie(104, "AC-Chair", 78));
+        bogies.add(new Bogie(105, "Executive", 56));
+
+        List<Bogie> filteredBogies = bogies.stream()
+                .filter(b -> b.capacity > 60)
+                .collect(Collectors.toList());
+
+        filteredBogies.forEach(System.out::println);
+    }
+}
