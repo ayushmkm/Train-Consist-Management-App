@@ -1,0 +1,62 @@
+class InvalidCapacityException extends Exception {
+    public InvalidCapacityException(String message) {
+        super(message);
+    }
+}
+
+class PassengerBogie {
+    private int capacity;
+
+    public PassengerBogie(int capacity) throws InvalidCapacityException {
+        if (capacity <= 0) {
+            throw new InvalidCapacityException("Invalid capacity");
+        }
+        this.capacity = capacity;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+}
+
+class Train {
+    private PassengerBogie[] bogies;
+    private int count;
+
+    public Train(int size) {
+        bogies = new PassengerBogie[size];
+        count = 0;
+    }
+
+    public void addBogie(PassengerBogie bogie) {
+        if (count < bogies.length) {
+            bogies[count++] = bogie;
+        }
+    }
+
+    public void display() {
+        for (int i = 0; i < count; i++) {
+            System.out.println("Bogie Capacity: " + bogies[i].getCapacity());
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Train train = new Train(5);
+
+        try {
+            PassengerBogie b1 = new PassengerBogie(50);
+            PassengerBogie b2 = new PassengerBogie(0);
+            PassengerBogie b3 = new PassengerBogie(30);
+
+            train.addBogie(b1);
+            train.addBogie(b2);
+            train.addBogie(b3);
+        } catch (InvalidCapacityException e) {
+            System.out.println(e.getMessage());
+        }
+
+        train.display();
+    }
+}
