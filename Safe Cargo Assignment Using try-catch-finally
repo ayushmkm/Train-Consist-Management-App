@@ -1,0 +1,40 @@
+class CargoSafetyException extends RuntimeException {
+    public CargoSafetyException(String message) {
+        super(message);
+    }
+}
+
+class GoodsBogie {
+    private String shape;
+    private String cargo;
+
+    public GoodsBogie(String shape) {
+        this.shape = shape;
+    }
+
+    public void assignCargo(String cargo) {
+        try {
+            if (cargo.equalsIgnoreCase("petroleum") && shape.equalsIgnoreCase("rectangular")) {
+                throw new CargoSafetyException("Unsafe cargo assignment");
+            }
+            this.cargo = cargo;
+            System.out.println("Cargo assigned: " + cargo);
+        } catch (CargoSafetyException e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            System.out.println("Assignment process completed");
+        }
+    }
+}
+
+public class TrainConsistManagementApp {
+    public static void main(String[] args) {
+        GoodsBogie bogie1 = new GoodsBogie("rectangular");
+        GoodsBogie bogie2 = new GoodsBogie("cylindrical");
+
+        bogie1.assignCargo("petroleum");
+        bogie2.assignCargo("petroleum");
+
+        System.out.println("Application continues running");
+    }
+}
