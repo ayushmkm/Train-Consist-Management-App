@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class BubbleSortBogieCapacities {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter number of bogies: ");
+        int n = scanner.nextInt();
+        int[] capacities = new int[n];
+        
+        System.out.println("Enter passenger capacities for each bogie:");
+        for (int i = 0; i < n; i++) {
+            capacities[i] = scanner.nextInt();
+        }
+        
+        boolean swapped;
+        for (int i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (capacities[j] > capacities[j + 1]) {
+                    int temp = capacities[j];
+                    capacities[j] = capacities[j + 1];
+                    capacities[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) break;
+        }
+        
+        System.out.println("Sorted bogie capacities (ascending order):");
+        for (int capacity : capacities) {
+            System.out.print(capacity + " ");
+        }
+        System.out.println();
+        
+        scanner.close();
+    }
+}
