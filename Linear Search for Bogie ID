@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class LinearSearchBogie {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of bogies: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        String[] bogies = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            bogies[i] = sc.nextLine();
+        }
+
+        System.out.print("Enter bogie ID to search: ");
+        String key = sc.nextLine();
+
+        boolean found = false;
+
+        for (int i = 0; i < n; i++) {
+            if (bogies[i].equals(key)) {
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            System.out.println("Bogie found");
+        } else {
+            System.out.println("Bogie not found");
+        }
+    }
+}
