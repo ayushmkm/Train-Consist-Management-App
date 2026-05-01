@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class BinarySearchBogie {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+        String[] bogies = new String[n];
+
+        for (int i = 0; i < n; i++) {
+            bogies[i] = sc.next();
+        }
+
+        Arrays.sort(bogies);
+
+        String key = sc.next();
+
+        int low = 0, high = n - 1;
+        boolean found = false;
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int cmp = key.compareTo(bogies[mid]);
+
+            if (cmp == 0) {
+                System.out.println("Found at index: " + mid);
+                found = true;
+                break;
+            } else if (cmp > 0) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        if (!found) {
+            System.out.println("Not Found");
+        }
+
+        sc.close();
+    }
+}
